@@ -26,5 +26,9 @@ require __DIR__ . '/../src/middleware.php';
 // Register routes
 require __DIR__ . '/../src/routes.php';
 
+// Register environment variables
+// define('__ROOT__', dirname(dirname(__FILE__))); 
+// require_once(__ROOT__.'/env.php'); 
+
 // Run app
 $app->run();

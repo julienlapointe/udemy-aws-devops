@@ -1,4 +1,7 @@
 <?php
+define('__ROOT__', dirname(dirname(__FILE__))); 
+require_once(__ROOT__.'/env.php'); 
+
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
