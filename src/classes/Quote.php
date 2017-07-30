@@ -1,6 +1,6 @@
 <?php
 
-include_once("../chrome_php_debugger.php");
+// include_once("../chrome_php_debugger.php");
 
 class Quote{
     static private $CATEGORIES = array("inspire", "management", "sports", "life", "funny");
@@ -13,7 +13,7 @@ class Quote{
 
     public function __construct($category=null, $db){
         $this->category = $this->validateCategory($category);
-        ChromePhp::log($db);
+        // ChromePhp::log($db);
         $this->db = $db;
     }
 

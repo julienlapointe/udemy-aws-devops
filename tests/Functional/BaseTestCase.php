@@ -15,12 +15,6 @@ use Slim\Http\Environment;
  */
 class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Use middleware when running application?
-     *
-     * @var bool
-     */
-    protected $withMiddleware = true;
 
     /**
      * Process the application given a request method and URI
@@ -59,11 +53,6 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
 
         // Set up dependencies
         require __DIR__ . '/../../src/dependencies.php';
-
-        // Register middleware
-        if ($this->withMiddleware) {
-            require __DIR__ . '/../../src/middleware.php';
-        }
 
         // Register routes
         require __DIR__ . '/../../src/routes.php';

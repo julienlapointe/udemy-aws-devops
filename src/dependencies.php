@@ -1,7 +1,7 @@
 <?php
 // DIC configuration
 
-include_once("../chrome_php_debugger.php");
+// include_once("../chrome_php_debugger.php");
 
 $container = $app->getContainer();
 
@@ -27,7 +27,7 @@ $container['logger'] = function ($c) {
 // PDO database library
 $container['db'] = function ($c) {
     $settings = $c->get('settings')['db'];
-    ChromePhp::log($settings);
+    // ChromePhp::log($settings);
     $pdo = new PDO("mysql:host=" . $settings['host'] . ";dbname=" . $settings['database'], $settings['username'], $settings['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
