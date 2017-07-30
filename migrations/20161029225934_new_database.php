@@ -1,5 +1,9 @@
 <?php
 
+// __ROOT__ is the project's root folder (not "public", "templates" or another sub-folder)
+// define('__ROOT__', dirname(dirname(__FILE__))); 
+// require(__ROOT__ . '/.env');
+
 use Phinx\Migration\AbstractMigration;
 
 class NewDatabase extends AbstractMigration

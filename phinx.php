@@ -1,4 +1,5 @@
 <?php
+
     return array(
         "paths" => array(
             "migrations" => "migrations"

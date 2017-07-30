@@ -7,16 +7,27 @@ $app->get('/health', function ($request, $response, $args) {
 $app->get('/[{category}]', function ($request, $response, $args) {
     try{
         // Fetch Quote
+        // received error so added this "empty" check
+        if (empty($args['category']))
+        {
+            $args['category'] = null;
+        }
         $quoteClient = new \Quote($args['category'], $this->db);
         $quote = $quoteClient->fetchQuote();
+        $errorMessage = false;
     }catch(\Exception $e){
         $errorMessage = $e->getMessage();
     }
 
     // Any flash messages?
-    if (session_status() !== PHP_SESSION_NONE) {
-        $messages = $this->flash->getMessages();
+    // if (session_status() !== PHP_SESSION_NONE) {
+    $messages = $this->flash->getMessages();
+    // received error so added this "empty" check
+    if (empty($messages))
+    {
+        $messages = null;
     }
+    // }
 
     // Render index view
     return $this->renderer->render($response, 'index.phtml', array("quote" => $quote, "messages"=>$messages, "error"=>$errorMessage) );

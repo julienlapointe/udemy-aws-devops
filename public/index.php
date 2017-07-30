@@ -1,4 +1,8 @@
 <?php
+
+// include_once("../chrome_php_debugger.php");
+// ChromePhp::log(__DIR__);
+
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
     // something which should probably be served as a static file
@@ -11,6 +15,11 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
+// must use Dotenv AFTER vendor/autoload.php BUT BEFORE these environment variables are needed by src/dependencies.php below!!!
+// https://stackoverflow.com/questions/37199237/fatal-error-class-dotenv-dotenv-not-found-in
+$dotenv = new Dotenv\Dotenv(__DIR__ . "/../");
+$dotenv->load();
+
 session_start();
 
 // Instantiate the app
@@ -20,15 +29,8 @@ $app = new \Slim\App($settings);
 // Set up dependencies
 require __DIR__ . '/../src/dependencies.php';
 
-// Register middleware
-require __DIR__ . '/../src/middleware.php';
-
 // Register routes
 require __DIR__ . '/../src/routes.php';
-
-// Register environment variables
-// define('__ROOT__', dirname(dirname(__FILE__))); 
-// require_once(__ROOT__.'/env.php'); 
 
 // Run app
 $app->run();

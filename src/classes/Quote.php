@@ -1,4 +1,7 @@
 <?php
+
+include_once("../chrome_php_debugger.php");
+
 class Quote{
     static private $CATEGORIES = array("inspire", "management", "sports", "life", "funny");
     static private $ENDPOINT = "http://quotes.rest/qod.json?category=%s";
@@ -10,6 +13,7 @@ class Quote{
 
     public function __construct($category=null, $db){
         $this->category = $this->validateCategory($category);
+        ChromePhp::log($db);
         $this->db = $db;
     }
 

@@ -1,6 +1,8 @@
 <?php 
+    include_once("../chrome_php_debugger.php");
     // define('__ROOT__', dirname(dirname(__FILE__))); 
-    // require_once(__ROOT__.'/env.php'); 
+    // ChromePhp::log(__ROOT__);
+    // require_once(__ROOT__.'/.env'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,10 @@
 
             <a href="?random=<?php echo substr(md5(uniqid()), 0, 6) ?>"><img src="<?php echo getenv('ASSETS_BASE_URL') ?>assets/img/logo.png" class="logo" /></a>
 
-            <?php if($error): ?>
+            <?php 
+                ChromePhp::log($error);
+                if($error): 
+            ?>
                 <hr />
                 <div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-alert"></span> <strong> Error: </strong><?php echo $error ?></div>
                 <hr />
